@@ -13,7 +13,6 @@ export const StateForm = () => {
       dateVisited,
       wasFun
     })
-    console.log(res)
     setName('')
     setDateVisited('')
     setWasFun('true')

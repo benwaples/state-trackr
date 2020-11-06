@@ -1,14 +1,13 @@
 import { StateType } from "../types"
-const api = process.env.API_URL as string
+const api = process.env.REACT_APP_API_URL as string
 
 export const addState = async(state : StateType) => {
-  console.log(state)
   const changeBool = {
     ...state,
     wasFun: state.wasFun === 'true' ? true : false
   }
 
-  const res = await fetch(`http://localhost:7890/api/v1/states`, {
+  const res = await fetch(`${api}/api/v1/states`, {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
