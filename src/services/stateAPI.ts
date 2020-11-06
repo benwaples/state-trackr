@@ -20,3 +20,17 @@ export const addState = async(state : StateType) => {
   if(!res.ok) return json
   return json
 }
+
+export const deleteState = async(id: string) => {
+  const res = await fetch(`${api}/api/v1/states/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  const json = await res.json()
+
+  if(!res.ok) return json
+  return json
+}

@@ -11,7 +11,8 @@ export type ActionType = {
 }
 
 export type ReducerStateType = {
-  states: StateType[]
+  states: StateType[],
+  updateState: StateType
 }
 
 export type StateELType = {
