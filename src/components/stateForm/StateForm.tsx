@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { prependState } from '../../actions/stateActions'
 import { addState } from '../../services/stateAPI'
 
 export const StateForm = () => {
   const [name, setName] = useState('')
   const [dateVisited, setDateVisited] = useState('')
   const [wasFun, setWasFun] = useState('true')
+   const dispatch = useDispatch()
 
   const handleSubmit = async(event: { preventDefault: () => void }) => {
     event.preventDefault()
     const res = await addState({
+      id: '',
       name,
       dateVisited,
       wasFun
     })
+    dispatch(prependState(res))
     setName('')
     setDateVisited('')
     setWasFun('true')
