@@ -1,9 +1,11 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from '../store';
+import { ReducerStateType } from '../types';
 import './App.css';
 import { StateForm } from './stateForm/StateForm';
 import { StateList } from './stateList/StateList';
+import { UpdateState } from './updateState/UpdateState';
 
 function App() {
   return (

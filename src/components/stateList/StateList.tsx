@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { ReducerStateType } from '../../types'
+import { getAllState } from '../../services/stateAPI'
+import { ReducerStateType, StateType } from '../../types'
+import { UpdateState } from '../updateState/UpdateState'
 import { State } from './State'
 
 export const StateList = () => {
-  const states = useSelector((state: ReducerStateType) => state.states)
+  const [states, setStates] = useState<StateType[]>([{ name: '', id: '', dateVisited: '', wasFun: '' }])
+  const updateState = useSelector((state: ReducerStateType) => state.updateState)
 
-  const stateElements = states.map((state) => (<li key={state.id}><State {...state}/></li>))
+  useEffect(() => {
+    getAllState()
+      .then(states => setStates(states))
+  }, [states])
 
-  console.log(states)
+  const stateElements = states.map((state: StateType) => (<li key={state.id}><State {...state}/></li>))
+
   return (
     <div>
       {stateElements}
+      {updateState.id && <UpdateState id={updateState.id}/>}
     </div>
   )
 }

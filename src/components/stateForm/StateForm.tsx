@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { prependState } from '../../actions/stateActions'
 import { addState } from '../../services/stateAPI'
+import { statesAbbreviations } from '../../stateAbbreviation'
 
 export const StateForm = () => {
   const [name, setName] = useState('')
@@ -22,18 +23,21 @@ export const StateForm = () => {
     setDateVisited('')
     setWasFun('true')
   }
-
+const stateAbbEl = statesAbbreviations.map(state => <option value={state}>{state}</option>)
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
-        <input 
+        {/* <input 
           id="name"
           name="name"
           type="text"
           value={name}
           onChange={e => setName(e.target.value)}
-        />
+        /> */}
+        <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>
+          {stateAbbEl}
+        </select>
         <label htmlFor="dateVisited">Date visited this state</label>
         <input 
           id="dateVisited"

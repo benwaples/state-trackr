@@ -7,12 +7,12 @@ export type StateType = {
 
 export type ActionType = {
   type: string,
-  payload: StateType
+  payload: StateType | string
 }
 
 export type ReducerStateType = {
   states: StateType[],
-  updateState: StateType
+  updateState: StateType 
 }
 
 export type StateELType = {
