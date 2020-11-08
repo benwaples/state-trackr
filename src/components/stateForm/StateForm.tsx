@@ -28,6 +28,7 @@ const stateAbbEl = statesAbbreviations.map(state => <option value={state}>{state
 
   return (
     <div id="insert">
+      <h1>Visit a State</h1> 
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
         <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>
