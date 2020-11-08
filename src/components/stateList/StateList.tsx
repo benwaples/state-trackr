@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllState } from '../../services/stateAPI'
 import { LooseStateObject, ReducerStateType, StateType } from '../../types'
 import { UpdateState } from '../updateState/UpdateState'
-import { State } from './State'
 import USAMap from "react-usa-map";
 import { updateState } from '../../actions/stateActions'
+import './StateList.scss'
 
 
 export const StateList = () => {
@@ -29,7 +29,7 @@ export const StateList = () => {
   states.forEach((state: StateType) => stateElements[state.name] = { fill: state.wasFun === true ?'navy':'red', id: state.id})
 
   return (
-    <div>
+    <div id="main">
       <USAMap customize={stateElements} onClick={handleUpdate}/>
       {stateToUpdate.name && <UpdateState nameToUpdate={stateToUpdate.name}/>}
     </div>

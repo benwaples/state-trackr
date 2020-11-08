@@ -1,0 +1,21 @@
+#update {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 200px
+  }
+
+  #delete-visit {
+    height: 30px;
+    border: none;
+    background-color: red;
+  }
+}

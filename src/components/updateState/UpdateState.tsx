@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { clearUpdateState, updateAllState } from '../../actions/stateActions'
 import { deleteState, getStateByName, updateState } from '../../services/stateAPI'
 import { statesAbbreviations } from '../../stateAbbreviation'
+import './UpdateState.scss'
 
 export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
   const [id , setId ] = useState('')
@@ -40,7 +41,7 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
 
 
   return (
-    <div>
+    <div id="update">
       <h1>Update Visit</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
@@ -60,9 +61,9 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
           <option value="true">yes</option>
           <option value="false">no</option>
         </select>
-        <button>submit</button>
+        <button>edit</button>
       </form>
-      <button onClick={handleDelete}>delete visit</button>
+      <button id="delete-visit"onClick={handleDelete}>delete visit</button>
     </div>
   )
 }
