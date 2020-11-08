@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { prependState } from '../../actions/stateActions'
 import { addState } from '../../services/stateAPI'
 import { statesAbbreviations } from '../../stateAbbreviation'
+import './StateForm.scss'
 
 export const StateForm = () => {
   const [name, setName] = useState('')
@@ -26,7 +27,7 @@ export const StateForm = () => {
 const stateAbbEl = statesAbbreviations.map(state => <option value={state}>{state}</option>)
 
   return (
-    <div>
+    <div id="insert">
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
         <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>

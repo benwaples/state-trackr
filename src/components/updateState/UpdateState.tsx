@@ -57,7 +57,7 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
           onChange={e => setDateVisited(e.target.value)}
         />
         <label htmlFor="wasFun">Was it fun?</label>
-        <select id="wasFun" name="wasFun" value={wasFun} onChange={e => setWasFun(e.target.value)}>
+        <select className={wasFun ? 'blue' : 'red'} id="wasFun" name="wasFun" value={wasFun} onChange={e => setWasFun(e.target.value)}>
           <option value="true">yes</option>
           <option value="false">no</option>
         </select>
