@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { clearUpdateState, updateAllState } from '../../actions/stateActions'
-import { getStateById, updateState } from '../../services/stateAPI'
+import { getStateByName, updateState } from '../../services/stateAPI'
+import { statesAbbreviations } from '../../stateAbbreviation'
 
-export const UpdateState = ({ id }: { id: string }) => {
+export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
+  const [id , setId ] = useState('')
   const [name, setName] = useState('')
   const [dateVisited, setDateVisited] = useState('')
   const [wasFun, setWasFun] = useState('true')
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getStateById(id)
+    getStateByName(nameToUpdate)
       .then(res => {
         setName(res.name)
         setDateVisited(res.dateVisited)
         setWasFun(res.wasFun)
+        setId(res.id)
       })
     
-  }, [id])
+  }, [nameToUpdate])
   
 
   const handleSubmit = async(event: { preventDefault: () => void }) => {
@@ -27,18 +30,16 @@ export const UpdateState = ({ id }: { id: string }) => {
     dispatch(clearUpdateState())
   }
 
+  const stateAbbEl = statesAbbreviations.map(state => <option value={state}>{state}</option>)
+
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
-        <input 
-          id="name"
-          name="name"
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
+        <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>
+          {stateAbbEl}
+        </select>
         <label htmlFor="dateVisited">Date visited this state</label>
         <input 
           id="dateVisited"

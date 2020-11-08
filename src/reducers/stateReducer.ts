@@ -11,7 +11,7 @@ export default function reducer(state = initialState, action: ActionType): Reduc
     case PREPEND_STATE: 
       return { ...state, states: [(action.payload as StateType), ...state.states]}
     case UPDATE_STATE: 
-      return { ...state, updateState: (action.payload as StateType) }
+      return { ...state, updateState: { ...state.updateState, name: (action.payload as string)} }
     case UPDATE_ALL_STATES:
       const filteredState = state.states.filter((state: StateType) => state.id !== (action.payload as string))
       return { ...state, states: filteredState}

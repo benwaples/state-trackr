@@ -13,9 +13,9 @@ export const updateAllState = (id: string) => ({
 })
 
 export const UPDATE_STATE = 'updateState'
-export const updateState = (state: StateType) => ({
+export const updateState = (id: string) => ({
   type: UPDATE_STATE,
-  payload: state
+  payload: id
 })
 
 export const CLEAR_UPDATE_STATE = 'clearUpdateState' 

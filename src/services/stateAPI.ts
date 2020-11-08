@@ -30,8 +30,8 @@ export const getAllState = async() => {
   return json
 }
 
-export const getStateById = async(id: string) => {
-  const res = await fetch(`${api}/api/v1/states/${id}`, {
+export const getStateByName = async(name: string) => {
+  const res = await fetch(`${api}/api/v1/states/${name}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

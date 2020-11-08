@@ -21,3 +21,7 @@ export type StateELType = {
   dateVisited: string,
   wasFun: boolean | string,
 }
+
+export interface LooseStateObject {
+  [key: string]: { fill: string, id: string }
+}

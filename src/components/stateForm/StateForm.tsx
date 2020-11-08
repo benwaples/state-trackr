@@ -24,17 +24,11 @@ export const StateForm = () => {
     setWasFun('true')
   }
 const stateAbbEl = statesAbbreviations.map(state => <option value={state}>{state}</option>)
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
-        {/* <input 
-          id="name"
-          name="name"
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        /> */}
         <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>
           {stateAbbEl}
         </select>
