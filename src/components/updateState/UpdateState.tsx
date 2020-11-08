@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { clearUpdateState, updateAllState } from '../../actions/stateActions'
-import { getStateByName, updateState } from '../../services/stateAPI'
+import { deleteState, getStateByName, updateState } from '../../services/stateAPI'
 import { statesAbbreviations } from '../../stateAbbreviation'
 
 export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
@@ -21,6 +21,12 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
       })
     
   }, [nameToUpdate])
+
+  const handleDelete = () => {
+    deleteState(id)
+    dispatch(updateAllState(id))
+    dispatch(clearUpdateState())
+  }
   
 
   const handleSubmit = async(event: { preventDefault: () => void }) => {
@@ -35,6 +41,7 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
 
   return (
     <div>
+      <h1>Update Visit</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name of the State</label>
         <select id="name" name="name" value={name} onChange={e => setName(e.target.value)}>
@@ -55,6 +62,7 @@ export const UpdateState = ({ nameToUpdate }: { nameToUpdate: string }) => {
         </select>
         <button>submit</button>
       </form>
+      <button onClick={handleDelete}>delete visit</button>
     </div>
   )
 }
