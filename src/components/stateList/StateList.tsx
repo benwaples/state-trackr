@@ -11,12 +11,14 @@ import { updateState } from '../../actions/stateActions'
 export const StateList = () => {
   const [states, setStates] = useState<StateType[]>([{ name: '', id: '', dateVisited: '', wasFun: '' }])
   const stateToUpdate = useSelector((state: ReducerStateType) => state.updateState)
+  const reducerStates = useSelector((state: ReducerStateType) => state.states)
   const dispatch = useDispatch()
 
   useEffect(() => {
     getAllState()
       .then(states => setStates(states))
-  }, [])
+  }, [reducerStates])
+
   console.log(states)
   const handleUpdate = ({ target }: { target: { dataset: { name: string }}}) => {
     console.log(target.dataset.name)
