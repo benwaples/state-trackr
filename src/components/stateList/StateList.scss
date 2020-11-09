@@ -1,0 +1,15 @@
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.us-state-map {
+  width: 50%;
+  height: 450px;
+}
+
+.state:hover {
+  opacity: .7;
+}
